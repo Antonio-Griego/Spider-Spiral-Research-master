@@ -1,14 +1,12 @@
-function writePaths (jth_paths, N_robots)
+function writePaths (jth_paths, N_robots, N_circuits)
     
-    path = '/Users/linhtran/Desktop/';
-    fid = fopen([path,'sample1.txt'],'w');
+    path = '/Users/linhtran/Desktop/iAnt-ARGoS-linh_development/';
+    fid = fopen([path,'sample.txt'],'w');
     for i = 1:N_robots;
-        s1 = 'R';
-        s2 = int2str(i);
-        s = [s1 s2];
-        fprintf(fid,s);
         fprintf(fid,jth_paths{i});
+        fprintf(fid,'\n');
 %         fprintf(fid, jth_paths{i});
     end
+%     fprintf(fid,[int2str(N_robots),':',int2str(N_circuits)],'\n');
     fclose(fid);
 end

@@ -39,7 +39,5 @@ else
     disp(['Error direction ' direction ' is invalid.']);
 end
 
-
-
 end
 

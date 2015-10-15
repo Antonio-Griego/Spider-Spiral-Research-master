@@ -23,7 +23,7 @@ for i_robot = 1:N_robots
             
             paths_x{i_robot} = [ paths_x{i_robot}; paths_x{i_robot}(end)+0 ];
             paths_y{i_robot} = [ paths_y{i_robot}; paths_y{i_robot}(end)+1 ];
-            jth_paths{i_robot} = [jth_paths{i_robot},createPathString('N')]
+            jth_paths{i_robot} = [jth_paths{i_robot},createPathString('N')];
         end
         
 %             disp(['Robot number ' num2str(i_robot) ' went ' num2str(n_steps_north) ' steps North on circuit ' num2str(i_circuit)]);
@@ -34,7 +34,7 @@ for i_robot = 1:N_robots
         for j = 1:n_steps_east
             paths_x{i_robot} = [ paths_x{i_robot}; paths_x{i_robot}(end)+1 ];
             paths_y{i_robot} = [ paths_y{i_robot}; paths_y{i_robot}(end)+0 ];
-            jth_paths{i_robot} = [jth_paths{i_robot},createPathString('E')]
+            jth_paths{i_robot} = [jth_paths{i_robot},createPathString('E')];
         end
        
 %             disp(['Robot number ' num2str(i_robot) ' went ' num2str(n_steps_east) ' steps East on circuit ' num2str(i_circuit)]);
@@ -44,7 +44,7 @@ for i_robot = 1:N_robots
         for j = 1:n_steps_south
             paths_x{i_robot} = [ paths_x{i_robot}; paths_x{i_robot}(end)+0 ];
             paths_y{i_robot} = [ paths_y{i_robot}; paths_y{i_robot}(end)-1 ];
-            jth_paths{i_robot} = [jth_paths{i_robot},createPathString('S')]
+            jth_paths{i_robot} = [jth_paths{i_robot},createPathString('S')];
         end
         
 %             disp(['Robot number ' num2str(i_robot) ' went ' num2str(n_steps_south) ' steps South on circuit ' num2str(i_circuit)]);
@@ -54,7 +54,7 @@ for i_robot = 1:N_robots
         for j = 1:n_steps_west
             paths_x{i_robot} = [ paths_x{i_robot}; paths_x{i_robot}(end)-1 ];
             paths_y{i_robot} = [ paths_y{i_robot}; paths_y{i_robot}(end)+0 ];
-            jth_paths{i_robot} = [jth_paths{i_robot},createPathString('W')]
+            jth_paths{i_robot} = [jth_paths{i_robot},createPathString('W')];
         end
         
 %             disp(['Robot number ' num2str(i_robot) ' went ' num2str(n_steps_west) ' steps West on circuit ' num2str(i_circuit)]);
@@ -62,7 +62,7 @@ for i_robot = 1:N_robots
 end
 
 paths = [paths_x; paths_y]';
-writePaths(jth_paths,N_robots);
-
+writePaths(jth_paths,N_robots, N_circuits);
+plotMultiplePatterns(paths);
 end
 
