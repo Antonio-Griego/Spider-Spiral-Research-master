@@ -18,7 +18,7 @@
 %   PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
 %----------------------------------------------------------------------------------------
 
-\documentclass[a0paper,portrait]{baposter}
+\documentclass[a0paper,portrait,colspacing]{baposter}
 
 \usepackage[font=small,labelfont=bf]{caption} % Required for specifying captions to tables and figures
 \usepackage{booktabs} % Horizontal rules in tables
@@ -73,7 +73,6 @@ boxshade=plain
 %----------------------------------------------------------------------------------------
 
 \headerbox{Motivation and Contribution}{name=motiveandcontribution,column=0,row=0}{
-
 \begin{itemize}
 % \setlength{\itemindent}{-1em}
 \item Swarm Robotics uses simple, scalable, inexpensive, and flexible approaches that emulate biological systems \cite{NasaSwarmathon}.
@@ -116,15 +115,15 @@ A \textbf{benchmark algorithm} that allows evaluation of the efficiency of compl
 \indent For a single robot,
 \begin{itemize}
 \item \textbf{DSA is more efficient in finding randomly distributed food because it is a pre-planned exhaustive search that eliminates repeated steps.} 
-\item \textbf{However, the DSA is not statistically better at finding tags in the clustered environment.}
+\item \textbf{However, the DSA is only marginally better at finding tags in clustered environments.}
 \item \textbf{The efficiency of the CPFA is less variable than the DSA.}\\
 \end{itemize}
 %------------------------------------------------
-\begin{center}
-\vspace{-1em}\includegraphics[width=0.5\linewidth]{MultiRobot.png}\vspace{-1em}
-\captionof{figure}{Multiple robots performing the DSA.}
+% \begin{center}
+% \vspace{-1em}\includegraphics[width=5cm]{MultiRobot.png}\vspace{-1em}
+% \captionof{figure}{Multiple robots performing the DSA.}
 % \includegraphics[scale=0.20]{SwarmathonLogo.png}
-\end{center}
+% \end{center}
 %------------------------------------------------
 \indent Our future work will test our prediction that DSA is a reliable and efficient search algorithm for foraging swarms without error, but the CPFA is superior given large numbers of robots with localization error.\vspace{1em}
 %------------------------------------------------
@@ -136,7 +135,7 @@ A \textbf{benchmark algorithm} that allows evaluation of the efficiency of compl
 
 \headerbox{References}{name=references,column=0,below=conclusion}{
 
-\smaller % Reduce the font size in this block
+% \smaller % Reduce the font size in this block
 \renewcommand{\section}[2]{\vskip 0.05em} % Get rid of the default "References" section title
 \nocite{*} % Insert publications even if they are not cited in the poster
 
@@ -144,23 +143,13 @@ A \textbf{benchmark algorithm} that allows evaluation of the efficiency of compl
 \bibliography{sample} % Use sample.bib as the bibliography file
 }
 
-% %----------------------------------------------------------------------------------------
-% %   ACKNOWLEDGEMENTS
-% %----------------------------------------------------------------------------------------
+% % %----------------------------------------------------------------------------------------
+% % %   ACKNOWLEDGEMENTS
+% % %----------------------------------------------------------------------------------------
 
 \headerbox{Source Code}{name=sourcecode,column=0,below=references, above=bottom}{
- \smaller
- \noindent 
-  Project source code is available at: \\
-  \url{https://github.com/BCLab-UNM} \\
-  
-% * <linh17.tran@gmail.com> 2015-09-19T21:36:47.663Z:
-%
-% 
-%
-  \vspace{-2mm}
-  \noindent
-  Project information, including iAnt build instructions and related work, is available at: \\
+ \noindent Project source code is available at: \\\vspace{1em}\url{https://github.com/BCLab-UNM} \\
+ \noindent Project information, including iAnt build instructions and related work, is available at: \\
   \small \url{http://sites.google.com/site/unmantbot/}.
 } 
 
@@ -198,28 +187,33 @@ We ran each algorithm 50 times for 1 hour real time trials, for multiple resourc
 
 \headerbox{Results}{name=results,span=2,column=1,below=methods,above=bottom}{ % To reduce this block to 1 column width, remove 'span=2'
 
-\floatbox[{\capbeside\thisfloatsetup{capbesideposition={right,center},capbesidewidth=5.5cm}}]{figure}[\FBwidth]
-{\caption{Displays the percentage of improvement of DSA to the CPFA}\label{fig:test}}
-{\includegraphics[width=5cm]{CPFAvsDSABar.png}}
+% \floatbox[{\capbeside\thisfloatsetup{capbesideposition={right,center},capbesidewidth=5.5cm}}]{figure}[\FBwidth]
+% {\caption{Displays the percentage of improvement of DSA to the CPFA}\label{fig:test}}
+% {\includegraphics[width=5cm]{CPFAvsDSABar.png}}
 %------------------------------------------------
-Our results reveal that: 
+% Our results reveal that: 
+
+%------------------------------------------------
+% \begin{center}
+% % \includegraphics[scale=0.4]{CPFAvsDSA.png}
+% \includegraphics[scale=0.4]{CPFAvsDSALine.png}
+% \captionof{figure}{Displays the standard and mean comparison of the CPFA and DSA with a single robot.}
+% \end{center}
+\includegraphics[width=0.35\linewidth]{CPFAvsDSABar.png}
+\hspace{25pt}\includegraphics[width=0.5\linewidth]{CPFAvsDSALine.png}\par
+\captionof{figure}{Displays the percentage, standard, and mean improvement of the DSA to the CPFA with a single robot.}
 \begin{itemize}
-\item A single robot performing the DSA does $20\%$ (Fig. 3) better when collecting randomly distributed resources than the CPFA. 
-\item DSA is statistically indistinguishable in performance for both the Power law and Clustered environments as shown in (Fig. 3).
+\item A single robot performing the DSA does $20\%$ better when collecting randomly distributed resources than the CPFA. 
+\item Given that all data is statistically distinguishable, the improvement in the DSA for the Power law and Clustered environments are relatively small compared to Random.
+\item The DSA produces more variable results due to its dependence on food placement. In comparison, the CPFA produces more predictable results, despite using probabilistic communication.
 \end{itemize}
-%------------------------------------------------
-\begin{center}
-% \includegraphics[scale=0.4]{CPFAvsDSA.png}
-\includegraphics[scale=0.4]{CPFAvsDSALine.png}
-\captionof{figure}{Displays the standard and mean comparison of the CPFA and DSA with a single robot.}
-\end{center}
-
-The results from (fig. 4) illustrate the DSA produces more variant results due to its dependence on food placement. In comparison, the CPFA produces more predictable results, despite using probabilistic communication.
-
+\textbf{Multiple Robots in the DSA}\vspace{-1em}
 %------------------------------------------------
 
+\floatbox[{\capbeside\thisfloatsetup{capbesideposition={left,center},capbesidewidth=5cm}}]{figure}[\FBwidth]
+{\caption{The paths of 3 robots performing the DSA (Results TBA).}}
+{\includegraphics[width=5cm]{3RobotsDSA.png}}
 }
-
 %----------------------------------------------------------------------------------------
 
 \end{poster}
